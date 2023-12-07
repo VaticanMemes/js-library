@@ -1,0 +1,99 @@
+/* 
+Colors:
+Dark teel: 10889E
+Light teel: E1F1F2
+Medium teel: 45bcd2
+Grey Teel: 445566
+*/
+
+body {
+    background-color: #10889E;
+    font-family: Verdana;
+  }
+  
+  #container {
+    width: 960px;
+    margin: auto;
+    background-color: #E1F1F2;
+  }
+  
+  h1 {
+    text-align: center;
+    font-size: 3em;
+    color: #445566;
+    font-family: Georgia, Times, Serif;
+    font-weight: normal;
+    margin: 0;
+    padding: 20px;
+  }
+  
+  h2 {
+    color: #445566;
+    padding: 0px;
+  }
+  
+  h3 {
+    color: #445566;
+    margin: 0px;
+  }
+  
+  nav {
+    background-color: #45bcd2;
+    height: 30px;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+  
+  nav ul {
+    list-style: none;
+    margin: 0;
+    padding-top: 5px;
+  }
+  
+  nav li {
+    display: inline;
+    margin-left: 10px;
+    margin-right: 10px;
+  }
+  
+  nav li a {
+    color: white;
+  }
+  
+  aside {
+    width: 200px;
+    height: 350px;
+    border: 1px solid #10889E;
+    float: left;
+    margin-left: 30px;
+    padding: 5px;
+  }
+  
+  #main {
+    width: 650px;
+    float: right;
+    margin-right: 30px;
+    line-height: 20px;
+  }
+  
+  footer {
+    height: 50px;
+    background-color: lightgrey;
+    clear: both;
+  }
+  
+  footer ul {
+    list-style: none;
+    text-align: center;
+    padding-top: 15px;
+  }
+  
+  footer li {
+    display: inline;
+    margin-left: 10px;
+    margin-right: 10px;
+  }
+  
+  footer li a {
+    color: black;
+  }

@@ -43,65 +43,12 @@
       <div id="pages-read-label" class="form-text">Pages read</div>
     </div>
     </div>
-    <button type="submit" id="submit-button" class="btn btn-primary">Submit</button>
+    <button id="submit-button" class="btn btn-primary">Submit</button>
   </form>
   <hr>
 
   <p><strong>Library:</strong></p>
-  <div class="row row-cols-1 row-cols-md-3 g-4">
-    <div class="col">
-      <div class="card">
-        <div class="card-body">
-          <h5 class="card-title">The Hobbit</h5>
-          <p class="card-text">J.R.R. Tolkein <br> 160/320 pages read</p>
-          <div class="progress" role="progressbar" aria-label="Example with label" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">
-            <div class="progress-bar" style="width: 50%">50%</div>
-          </div>
-          <br>
-          <button type="button" class="btn btn-outline-danger">Delete</button>
-        </div>
-      </div>
-    </div>
-    <div class="col">
-      <div class="card">
-        <div class="card-body">
-          <h5 class="card-title">The Hobbit</h5>
-          <p class="card-text">J.R.R. Tolkein <br> 160/320 pages read</p>
-          <div class="progress" role="progressbar" aria-label="Example with label" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">
-            <div class="progress-bar" style="width: 50%">50%</div>
-          </div>
-          <br>
-          <button type="button" class="btn btn-outline-danger">Delete</button>
-        </div>
-      </div>
-    </div>
-    <div class="col">
-      <div class="card">
-        <div class="card-body">
-          <h5 class="card-title">The Hobbit</h5>
-          <p class="card-text">J.R.R. Tolkein <br> 160/320 pages read</p>
-          <div class="progress" role="progressbar" aria-label="Example with label" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">
-            <div class="progress-bar" style="width: 50%">50%</div>
-          </div>
-          <br>
-          <button type="button" class="btn btn-outline-danger">Delete</button>
-        </div>
-      </div>
-    </div>
-    <div class="col">
-      <div class="card">
-        <div class="card-body">
-          <h5 class="card-title">The Hobbit</h5>
-          <p class="card-text">J.R.R. Tolkein <br> 160/320 pages read</p>
-          <div class="progress" role="progressbar" aria-label="Example with label" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">
-            <div class="progress-bar" style="width: 50%">50%</div>
-          </div>
-          <br>
-          <button type="button" class="btn btn-outline-danger">Delete</button>
-        </div>
-      </div>
-    </div>
-  </div>
+  <div class="row row-cols-1 row-cols-md-3 g-4" id="cards"></div>
   <br>
 </div>
 <script src="script.js"></script>

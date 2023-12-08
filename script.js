@@ -21,6 +21,8 @@ class Book {
 
 const myLibrary = [];
 
+document.getElementById("submit-button").addEventListener("click", addBookToLibrary());
+
 function addBookToLibrary() {
     let title = document.getElementById("title").value;
     let author = document.getElementById("author").value;
@@ -30,5 +32,4 @@ function addBookToLibrary() {
     console.log(book);
     myLibrary.push(book);
     console.log(myLibrary);
-    document.getElementById("demo").innerHTML = "Hello World";
 }

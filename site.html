@@ -7,23 +7,43 @@
   <meta name="author" content="">
   <meta name="description" content="">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-
-  <link href="css/style.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
 </head>
 
 <body>
-<div id="container">
-  <h1>Javascript Library</h1>
+<div class="container" id="container">
+  <br>
+  <h1 class="display-4">JavaScript Library</h1>
   <hr>
-  <p>What book would you like to add?</p>
-  <input id="title">
-  <input id="author">
-  <input id="pages">
-  <input id="read_status">
-  <button type="button" onclick="addBookToLibrary()">Submit</button>
-
-  <script src="js/script.js"></script>
-</body>
+  <p><strong>Enter a book:</strong></p>
+  <form>
+    <div class="row">
+    <div class="col">
+      <!--<label for="title" class="form-label">Title</label>-->
+      <input type="text" class="form-control" id="title" placeholder="The Hobbit" aria-describedby="title-label">
+      <div id="title-label" class="form-text">Title</div>
+    </div>
+    <div class="col">
+      <input type="text" class="form-control" id="author" placeholder="J.R.R. Tolkein" aria-describedby="author-label">
+      <div id="author-label" class="form-text">Author</div>
+    </div>
+    <div class="col">
+      <input type="text" class="form-control" id="pages" placeholder="320" aria-describedby="pages-label">
+      <div id="pages-label" class="form-text">Page count</div>
+    </div>
+    <div class="col">
+      <input class="form-check-input" type="checkbox" value="" id="read" checked>
+      <label class="form-check-label" for="read">
+        Read?
+      </label>
+    </div>
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+  <hr>
 </div>
+<script src="js/script.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+</body>
 
 </html>

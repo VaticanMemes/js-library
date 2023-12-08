@@ -79,11 +79,17 @@ function updateTable() {
         button.className = "btn btn-outline-danger"
         button.setAttribute("type", "button")
         button.setAttribute("id", i)
+        button.setAttribute("onclick", "deleteBook(id)")
         button.appendChild(document.createTextNode("Delete"))
         cardBody.appendChild(button)
         // Final
         document.getElementById("cards").appendChild(column);
     }
+}
+
+function deleteBook(id) {
+    myLibrary.splice(id, 1);
+    updateTable();
 }
 
 function addBookToLibrary(evt) {

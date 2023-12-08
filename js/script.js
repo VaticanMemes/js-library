@@ -1,39 +1,9 @@
 /*
-console.log("hello world lmao")
-
-const myLibrary = [];
-
-class Book {
-    constructor(title, author, pages, read_status) {
-        this.title = title;
-        this.author = author;
-        this.pages = pages;
-        this.read_status = read_status;
-    }
-
-    getInfo() {
-        const read_statement = (this.read_status == true) ? "read": "not read yet";
-        return `${this.title} by ${this.author}, ${this.pages} pages, ${read_statement}`;
-    }
-}
-
-const book = new Book("The Hobbit", "JRR Tolkein", "320", true);
-
-console.log(book.getInfo());
-
-function addBookToLibrary() {
-    let title = document.getElementById("title").value;
-    let author = document.getElementById("author").value;
-    let pages = document.getElementById("pages").value;
-    let read_status = document.getElementById("read_status").value;
-}
-
-while(true) {
-    break;
-}
+Steps:
+1. Retrieve data from the form
+2. Put the data from the form into an array
+3. Spit that data out in the form of cards (the hardest part)
 */
-
-// Bad code lmao - fucked the whole thing up. The new code shall be better
 
 class Book {
     constructor(title, author, pages, pages_read) {
@@ -44,7 +14,21 @@ class Book {
     }
 
     getInfo() {
-        const read_statement = (this.read_status == true) ? "read": "not read yet";
+        const read_statement = (this.read_status == this.pages_read) ? "read": "not read yet";
         return `${this.title} by ${this.author}, ${this.pages} pages, ${read_statement}`;
     }
+}
+
+const myLibrary = [];
+
+function addBookToLibrary() {
+    let title = document.getElementById("title").value;
+    let author = document.getElementById("author").value;
+    let pages = document.getElementById("pages").value;
+    let pagesRead = document.getElementById("pages-read").value;
+    let book = new Book(title, author, pages, pagesRead);
+    console.log(book);
+    myLibrary.push(book);
+    console.log(myLibrary);
+    document.getElementById("demo").innerHTML = "Hello World";
 }

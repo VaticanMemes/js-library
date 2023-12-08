@@ -36,11 +36,11 @@ while(true) {
 // Bad code lmao - fucked the whole thing up. The new code shall be better
 
 class Book {
-    constructor(title, author, pages, read_status) {
+    constructor(title, author, pages, pages_read) {
         this.title = title;
         this.author = author;
         this.pages = pages;
-        this.read_status = read_status;
+        this.pages_read = pages_read;
     }
 
     getInfo() {
@@ -48,4 +48,3 @@ class Book {
         return `${this.title} by ${this.author}, ${this.pages} pages, ${read_statement}`;
     }
 }
-

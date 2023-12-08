@@ -52,15 +52,22 @@ function updateTable() {
         cardTitle.className = "card-title";
         cardTitle.appendChild(document.createTextNode(myLibrary[i].title));
         cardBody.appendChild(cardTitle);
+        // Progress bar maths - pages read can't be more than 100%
+        if (parseInt(myLibrary[i].pages_read) > myLibrary[i].pages) {
+            var pageFrac = (myLibrary[i].pages + "/" + myLibrary[i].pages + " pages read");
+            var barPerct = "100";
+        } else {
+            var pageFrac = (myLibrary[i].pages_read + "/" + myLibrary[i].pages + " pages read");
+            var barPerct = String(Math.round((myLibrary[i].pages_read / myLibrary[i].pages) * 100));
+        }
         // Card title & pages read
         const cardInfo = document.createElement("p");
         cardInfo.className = "card-text";
         cardInfo.appendChild(document.createTextNode(myLibrary[i].author));
         cardInfo.appendChild(document.createElement('br'));
-        cardInfo.appendChild(document.createTextNode(myLibrary[i].pages_read + "/" + myLibrary[i].pages + " pages read"));
+        cardInfo.appendChild(document.createTextNode(pageFrac));
         cardBody.appendChild(cardInfo);
         // Progress bar
-        const barPerct = String(Math.round((myLibrary[i].pages_read / myLibrary[i].pages) * 100))
         const progressBar = document.createElement("div");
         progressBar.className = "progress";
         progressBar.setAttribute("role", "progressbar");
@@ -68,7 +75,11 @@ function updateTable() {
         progressBar.setAttribute("aria-valuemin", "0");
         progressBar.setAttribute("aria-valuemax", "100");
         const progressBarBar = document.createElement("div");
-        progressBarBar.className = "progress-bar";
+        if (barPerct === "100") {
+            progressBarBar.className = "progress-bar progress-bar-striped";
+        } else {
+            progressBarBar.className = "progress-bar";
+        }
         progressBarBar.setAttribute("style", "width: " + barPerct + "%");
         progressBarBar.appendChild(document.createTextNode(barPerct + "%"));
         progressBar.appendChild(progressBarBar);

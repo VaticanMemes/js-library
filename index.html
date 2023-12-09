@@ -18,22 +18,22 @@
   <p><strong>Enter a book:</strong></p>
   <form>
     <div class="row">
-    <div class="col">
-      <input type="text" class="form-control" id="title" placeholder="The Hobbit" aria-describedby="title-label">
-      <div id="title-label" class="form-text">Title</div>
-    </div>
-    <div class="col">
-      <input type="text" class="form-control" id="author" placeholder="J.R.R. Tolkein" aria-describedby="author-label">
-      <div id="author-label" class="form-text">Author</div>
-    </div>
-    <div class="col">
-      <input type="text" class="form-control" id="pages" placeholder="320" aria-describedby="pages-label">
-      <div id="pages-label" class="form-text">Page count</div>
-    </div>
-    <div class="col">
-      <input type="text" class="form-control" id="pages-read" placeholder="160" aria-describedby="pages-read-label">
-      <div id="pages-read-label" class="form-text">Pages read</div>
-    </div>
+      <div class="col">
+        <input type="text" class="form-control" id="title" placeholder="Title" aria-describedby="title-label" required>
+        <div id="title-label" class="form-text">Title</div>
+      </div>
+      <div class="col">
+        <input type="text" class="form-control" id="author" placeholder="Author" aria-describedby="author-label" required>
+        <div id="author-label" class="form-text">Author</div>
+      </div>
+      <div class="col">
+        <input type="text" class="form-control" id="pages" placeholder="#" aria-describedby="pages-label" required>
+        <div id="pages-label" class="form-text">Page count</div>
+      </div>
+      <div class="col">
+        <input type="text" class="form-control" id="pages-read" placeholder="#" aria-describedby="pages-read-label" required>
+        <div id="pages-read-label" class="form-text">Pages read</div>
+      </div>
     </div>
     <br>
     <button id="submit-button" class="btn btn-primary">Submit</button>

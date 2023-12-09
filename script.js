@@ -1,16 +1,10 @@
 /*
-Steps:
-1. Retrieve data from the form
-2. Put the data from the form into an array
-3. Spit that data out in the form of cards (the hardest part)
-*/
-/*
-Little test:
-const yourLibrary = [{title: 'a', author: 'b', pages: 'c', pages_read: 'd'}, {title: 'e', author: 'f', pages: 'g', pages_read: 'h'}, {title: 'i', author: 'j', pages: 'k', pages_read: 'l'}];
-
-for (let i = 0; i < yourLibrary.length; i++) {
-    console.log(yourLibrary[i].title);
-}
+Work to do:
+- Validate the form ✔️
+- Say what went wrong when it fails using bootstrap validators ✔️
+- Revert all the boxes to the defaults when form is submitted ✔️
+- Enable user to change pages-read
+- Use local storage to save data
 */
 
 const myLibrary = [];
@@ -30,6 +24,11 @@ class Book {
 }
 
 function updateTable() {
+    // Update form first
+    document.getElementById("title").className = "form-control";
+    document.getElementById("author").className = "form-control";
+    document.getElementById("pages").className = "form-control";
+    document.getElementById("pages-read").className = "form-control";
     const cardsDiv = document.getElementById("cards")
     while (cardsDiv.firstChild) {
         cardsDiv.removeChild(cardsDiv.lastChild)
@@ -38,7 +37,6 @@ function updateTable() {
         // Column created
         const column = document.createElement("div");
         column.className = "col";
-        // document.getElementById("cards").insertBefore(column, document.getElementById("end-of-cards"));
         // Card created
         const card = document.createElement("div");
         card.className = "card";
@@ -103,15 +101,58 @@ function deleteBook(id) {
     updateTable();
 }
 
+function validateForm() {
+    if (document.getElementById("title").value !== '' 
+    && document.getElementById("author").value !== '' 
+    && Number.isInteger(parseInt(document.getElementById("pages").value)) 
+    && parseInt(document.getElementById("pages").value) >= 1
+    && Number.isInteger(parseInt(document.getElementById("pages-read").value))
+    && parseInt(document.getElementById("pages-read").value) >= 0) {
+        return true;
+    } else {
+        // Title validation
+        if (document.getElementById("title").value !== '') {
+            document.getElementById("title").className = "form-control is-valid";
+        } else {
+            document.getElementById("title").className = "form-control is-invalid";
+        }
+        // Author validation
+        if (document.getElementById("author").value !== '') {
+            document.getElementById("author").className = "form-control is-valid";
+        } else {
+            document.getElementById("author").className = "form-control is-invalid";
+        }
+        // Pages validation
+        if (Number.isInteger(parseInt(document.getElementById("pages").value)) && parseInt(document.getElementById("pages").value) >= 1) {
+            document.getElementById("pages").className = "form-control is-valid";
+        } else {
+            document.getElementById("pages").className = "form-control is-invalid";
+        }
+        // Pages-read validation
+        if (Number.isInteger(parseInt(document.getElementById("pages-read").value)) && parseInt(document.getElementById("pages-read").value) >= 0) {
+            document.getElementById("pages-read").className = "form-control is-valid";
+        } else {
+            document.getElementById("pages-read").className = "form-control is-invalid";
+        }
+        return false;
+    }
+}
+
 function addBookToLibrary(evt) {
     evt.preventDefault();
-    let title = document.getElementById("title").value;
-    let author = document.getElementById("author").value;
-    let pages = document.getElementById("pages").value;
-    let pagesRead = document.getElementById("pages-read").value;
-    let book = new Book(title, author, pages, pagesRead);
-    myLibrary.push(book);
-    updateTable();
+    if (validateForm() === true) {
+        let title = document.getElementById("title").value;
+        let author = document.getElementById("author").value;
+        let pages = document.getElementById("pages").value;
+        let pagesRead = document.getElementById("pages-read").value;
+        let book = new Book(title, author, pages, pagesRead);
+        myLibrary.push(book);
+        document.getElementById("title").value = '';
+        document.getElementById("author").value = '';
+        document.getElementById("pages").value = '';
+        document.getElementById("pages-read").value = '';
+        updateTable();
+    }
 }
 
 document.getElementById("submit-button").addEventListener("click", addBookToLibrary);

@@ -3,11 +3,18 @@ Work to do:
 - Validate the form ✔️
 - Say what went wrong when it fails using bootstrap validators ✔️
 - Revert all the boxes to the defaults when form is submitted ✔️
-- Enable user to change pages-read
-- Use local storage to save data
+- Enable user to change pages-read ✔️
+- Use local storage to save data ✔️
+PROJECT DONE... NOT TOUCHING THIS AGAIN
 */
 
-const myLibrary = [];
+if (localStorage.getItem("myLibrary") === null) {
+    var myLibrary = [];
+} else {
+    var myLibrary = JSON.parse(localStorage.getItem("myLibrary"));
+}
+
+updateTable();
 
 class Book {
     constructor(title, author, pages, pages_read) {
@@ -118,6 +125,7 @@ function updateTable() {
         document.getElementById("cards").appendChild(column);
         for (let j = 0; j < document.querySelectorAll(".pages-read-box").length; j++) {
             document.querySelectorAll(".pages-read-box")[j].addEventListener("input", updatePagesRead);
+            localStorage.setItem("myLibrary", JSON.stringify(myLibrary));
         }
     }
 }

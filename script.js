@@ -23,6 +23,16 @@ class Book {
     }
 }
 
+function isNumeric(str) {
+    // got this off stackoverflow lol - first bit my own addition
+    if (str === '') {
+        return true
+    } else {
+    if (typeof str != "string") return false
+    return !isNaN(str) && !isNaN(parseFloat(str))
+    }
+  }
+
 function updateTable() {
     // Update form first
     document.getElementById("title").className = "form-control";
@@ -52,18 +62,31 @@ function updateTable() {
         cardBody.appendChild(cardTitle);
         // Progress bar maths - pages read can't be more than 100%
         if (parseInt(myLibrary[i].pages_read) > myLibrary[i].pages) {
-            var pageFrac = (myLibrary[i].pages + "/" + myLibrary[i].pages + " pages read");
-            var barPerct = "100";
-        } else {
-            var pageFrac = (myLibrary[i].pages_read + "/" + myLibrary[i].pages + " pages read");
-            var barPerct = String(Math.round((myLibrary[i].pages_read / myLibrary[i].pages) * 100));
+            myLibrary[i].pages_read = myLibrary[i].pages
         }
+        if (!(isNumeric(myLibrary[i].pages_read))) {
+            myLibrary[i].pages_read = 0
+        }
+            //
+        var pageFrac = document.createElement("p");
+        var pageInput = document.createElement("input");
+        pageInput.setAttribute("class", "pages-read-box");
+        pageInput.setAttribute("type", "text");
+        pageInput.setAttribute("size", "1");
+        pageInput.setAttribute("id", String(i));
+        pageInput.setAttribute("value", String(myLibrary[i].pages_read));
+        pageInput.setAttribute("onfocus", "let value = this.value; this.value = null; this.value=value");
+        pageFrac.appendChild(pageInput);
+        pageFrac.appendChild(document.createTextNode("/" + String(myLibrary[i].pages)));
+            //
+        var barPerct = String(Math.round((myLibrary[i].pages_read / myLibrary[i].pages) * 100));
+        
         // Card title & pages read
         const cardInfo = document.createElement("p");
         cardInfo.className = "card-text";
         cardInfo.appendChild(document.createTextNode(myLibrary[i].author));
         cardInfo.appendChild(document.createElement('br'));
-        cardInfo.appendChild(document.createTextNode(pageFrac));
+        cardInfo.appendChild(pageFrac);
         cardBody.appendChild(cardInfo);
         // Progress bar
         const progressBar = document.createElement("div");
@@ -87,18 +110,31 @@ function updateTable() {
         const button = document.createElement("button")
         button.className = "btn btn-outline-danger"
         button.setAttribute("type", "button")
-        button.setAttribute("id", i)
-        button.setAttribute("onclick", "deleteBook(id)")
-        button.appendChild(document.createTextNode("Delete"))
-        cardBody.appendChild(button)
-        // Final
+        button.setAttribute("id", i);
+        button.setAttribute("onclick", "deleteBook(id)");
+        button.appendChild(document.createTextNode("Delete"));
+        cardBody.appendChild(button);
+        // Finale
         document.getElementById("cards").appendChild(column);
+        for (let j = 0; j < document.querySelectorAll(".pages-read-box").length; j++) {
+            document.querySelectorAll(".pages-read-box")[j].addEventListener("input", updatePagesRead);
+        }
     }
 }
 
 function deleteBook(id) {
     myLibrary.splice(id, 1);
     updateTable();
+}
+
+function updatePagesRead(evt) {
+    myLibrary[evt.target.id].pages_read = evt.target.value;
+    updateTable();
+    // document.getElementById(evt.target.id).focus()
+    // var val = evt.target.value
+    // evt.target.value = ""
+    document.getElementById(evt.target.id).focus();
+    // evt.target.value = val
 }
 
 function validateForm() {
